@@ -5,22 +5,22 @@
 (generate_opam_files true)
 
 (source
- (github username/reponame))
+ (github christopherfujino/ocaml_box))
 
-(authors "Author Name")
+(authors "Christopher Fujino")
 
-(maintainers "Maintainer Name")
+(maintainers "Christopher Fujino")
 
-(license LICENSE)
+(license "BSD 3")
 
 (documentation https://url/to/documentation)
 
 (package
  (name box)
- (synopsis "A short synopsis")
- (description "A longer description")
+ (synopsis "A terminal user interface library.")
+ (description "Render boxes to terminal.")
  (depends ocaml dune)
  (tags
-  (topics "to describe" your project)))
+  (ocaml tui ncurses)))
 
 ; See the complete stanza docs at https://dune.readthedocs.io/en/stable/reference/dune-project/index.html

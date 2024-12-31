@@ -15,6 +15,8 @@ let cross = "\u{253c}" (* ┼ *)
 let create_immutable_box b = Immutable b
 let create_mutable_box b = Mutable b
 
+(** The subset of functions that both [Array.t]s & [List.t]s share that we need
+    to use while rendering [box]es. *)
 module type Iterable = sig
   type 'a t
 
@@ -46,6 +48,7 @@ module Make (T : Iterable) = struct
     write last;
     Buffer.contents buffer
 
+  (** Render a [T] of strings *)
   let render_row row widths render_t =
     let middle_buffer = Buffer.create 32 in
     let term_width = ref 0 in
