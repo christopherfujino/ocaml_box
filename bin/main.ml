@@ -1,15 +1,18 @@
-open Box
+open Box.Boxes
 
 let () =
+  let open Curses in
+  let c = init () in
   let grid =
-    Boxes.create_immutable_box
-      [ [ "alpha"; "b"; "c"; "d" ]; [ "one"; "two"; "three"; "four" ] ]
+    create_mutable_box
+      [| [| "1" |]; [| "lala" |] |]
   in
-  print_string (Boxes.render_box grid)
+  (try render_box grid c
+   with exn ->
+     endwin ();
+     raise exn);
 
-let () =
-  let grid =
-    Boxes.create_mutable_box
-      [| [| "1"; "two"; "delta"; "the fourth entry" |]; [| "lala" |] |]
-  in
-  print_string (Boxes.render_box grid)
+  let i = getch () in
+  endwin ();
+  let c = Char.chr i in
+  Printf.printf "You pressed %c\n" c

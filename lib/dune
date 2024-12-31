@@ -1,2 +1,3 @@
 (library
- (name box))
+ (name box)
+ (libraries curses))

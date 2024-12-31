@@ -13,6 +13,14 @@ generate-docs:
 	dune build @doc
 #	dune build @doc-private
 
+.PHONY: build
+build:
+	dune build
+
 .PHONY: clean
 clean:
 	dune clean
+
+.PHONY: get
+get:
+	opam install . --deps-only --with-test --with-doc -vv

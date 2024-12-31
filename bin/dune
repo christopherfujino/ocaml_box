@@ -1,4 +1,4 @@
 (executable
  (public_name box)
  (name main)
- (libraries box))
+ (libraries box curses))

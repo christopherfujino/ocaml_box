@@ -19,7 +19,10 @@
  (name box)
  (synopsis "A terminal user interface library.")
  (description "Render boxes to terminal.")
- (depends ocaml dune)
+ (depends
+   ocaml
+   dune
+   (curses (= 1.0.11)))
  (tags
   (ocaml tui ncurses)))
 
