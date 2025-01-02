@@ -39,7 +39,9 @@ module CursesBuffer = struct
   let push (b : t) next = b := next :: !b
 
   let render b =
-    List.iter (function Int i -> addch i | String s -> addstr s) !b
+    (* Reverse since we've been pushing to the front *)
+    let elements = List.rev !b in
+    List.iter (function Int i -> addch i | String s -> addstr s) elements
 end
 
 let refresh () =

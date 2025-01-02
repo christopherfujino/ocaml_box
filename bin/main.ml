@@ -5,7 +5,7 @@ let () =
   let c = init () in
   let grid =
     create_mutable_box
-      [| [| "1" |]; [| "lala" |] |]
+      [| [| "1"; "2"; "3" |]; [| "alpha"; "beta"; "delta" |] |]
   in
   (try render_box grid c
    with exn ->
