@@ -1,3 +1,13 @@
+let () =
+  let open Box.Render in
+  let my_widget = Widget.Text "Yolo dawg" in
+  let render_box = Widget.layout
+    my_widget
+    { minWidth = 0; maxWidth = 100; minHeight = 0; maxHeight = 100 } in
+  RenderBox.render render_box 0 0;
+  print_endline "end"
+
+(*
 open Box.Boxes
 
 let () =
@@ -16,3 +26,4 @@ let () =
   endwin ();
   let c = Char.chr i in
   Printf.printf "You pressed %c\n" c
+  *)
