@@ -2,11 +2,10 @@ let () =
   let open Box.Render in
   let _ = Box.Boxes.init () in
   (try
-     (layout
-        (Container { border = 1; child = Text "Yolo Dawg!" })
-        { minWidth = 0; maxWidth = 100; minHeight = 0; maxHeight = 100 })
-       .render
-       0 0
+     layout
+       (Container { border = 1; child = Text "Yolo Dawg!" })
+       { minWidth = 0; maxWidth = 100; minHeight = 0; maxHeight = 100 }
+     |> render 0 0
    with exn ->
      Curses.endwin ();
      raise exn);

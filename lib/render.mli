@@ -7,11 +7,6 @@ type constraints = {
 
 type widget = Text of string | Container of { border : int; child : widget }
 type size
-type render_target = {
-  size : size;
-  children : render_target list;
-  render : int -> int -> unit;
-}
-
-
+type render_target
 val layout : widget -> constraints -> render_target
+val render : int -> int -> render_target -> unit

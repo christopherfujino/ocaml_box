@@ -23,9 +23,11 @@ type size = { height : int; width : int }
 
 type render_target = {
   size : size;
-  children : render_target list;
   render : int -> int -> unit;
+      (** Should be responsible for rendering children, if any *)
 }
+
+let render x y rt = rt.render x y
 
 (* TODO pass a build context? *)
 let rec layout w (cons : constraints) =
@@ -46,7 +48,6 @@ let rec layout w (cons : constraints) =
             width = child_target.size.width + (border * 2);
             height = child_target.size.height + (border * 2);
           };
-        children = [ child_target ];
         render =
           (fun x y ->
             let border = border in
@@ -56,9 +57,5 @@ let rec layout w (cons : constraints) =
   | Text s ->
       let width = String.length s in
       if width <= cons.maxWidth then
-        {
-          size = { width; height = 1 };
-          children = [];
-          render = (fun x y -> mvaddstr y x s);
-        }
+        { size = { width; height = 1 }; render = (fun x y -> mvaddstr y x s) }
       else failwith "TODO"
